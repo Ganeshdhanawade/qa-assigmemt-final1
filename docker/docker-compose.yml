@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+  milvus:
+    image: milvusdb/milvus
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+  mlflow:
+    image: "mlflow/mlflow"
+    ports:
+      - "5000:5000"
+    environment:
+      MLFLOW_TRACKING_URI: "http://localhost:5000"

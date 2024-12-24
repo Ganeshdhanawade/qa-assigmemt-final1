@@ -1,0 +1,76 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout code
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build and Start Docker Containers
+        run: |
+          docker-compose -f docker/docker-compose.yml up -d --build
+
+      - name: Run Tests
+        run: |
+          pytest tests/
+
+      - name: Retrain Model and Log to MLflow
+        run: |
+          python mlops/pipeline.py retrain_model data/train_data.csv
+
+      - name: Shutdown Docker Containers
+        run: |
+          docker-compose -f docker/docker-compose.yml down
+
+      - name: Push Docker Image to Registry (optional)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker build -t your_image_name .
+          docker push your_image_name
+    
+
+# name: CI/CD
+# on:
+#   push:
+#     branches:
+#       - main
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set up Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.9'
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+#       - name: Run Tests
+#         run: |
+#           pytest tests/
+#       - name: Build and Push Docker Image
+#         run: |
+#           docker build -t your_image_name .
+#           docker push your_image_name
+#       - name: Retrain Model and Log to MLflow
+#         run: |
+#           python mlops/pipeline.py retrain_model data/train_data.csv
