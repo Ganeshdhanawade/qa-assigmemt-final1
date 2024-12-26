@@ -65,7 +65,7 @@ The RAG pipeline ingests documents, preprocesses them, generates vector embeddin
 
 ## Pipeline Architecture
 
-![RAG Pipeline Architecture](https://github.com/Ganeshdhanawade/qp-ai-assessment1/blob/main/images/rag-pipeline.jpg)
+![RAG Pipeline Architecture](https://github.com/Ganeshdhanawade/qp-ai-assessment1/blob/main/images/rag-pipeline.png)
 
 ### Steps in the Pipeline:
 1. **Document Ingestion**:
