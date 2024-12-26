@@ -4,17 +4,6 @@ This repository implements a complete Machine Learning Operations (MLOps) pipeli
 
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Architecture](#architecture)
-3. [Features](#features)
-4. [Technologies Used](#technologies-used)
-5. [Setup Instructions](#setup-instructions)
-6. [Pipeline Workflow](#pipeline-workflow)
-7. [Monitoring](#monitoring)
-8. [Contributing](#contributing)
-9. [License](#license)
-
 ---
 
 ## Overview
@@ -23,7 +12,7 @@ This project automates the lifecycle of a machine learning model, from training 
 ---
 
 ## Architecture
-![MLOps Architecture](path/to/architecture-diagram.jpg)
+![MLOps Architecture](https://github.com/Ganeshdhanawade/qa-assigmemt-final1/blob/main/1_ub_u88a4MB5Uj-9Eb60VNA.jpg))
 
 The pipeline consists of three major stages:
 1. **Training**: Data preparation, model training, and versioning.
