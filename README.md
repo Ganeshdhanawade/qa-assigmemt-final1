@@ -53,3 +53,74 @@ The pipeline consists of three major stages:
 ```bash
 git clone https://github.com/your-repo/mlops-pipeline.git
 cd mlops-pipeline
+```
+
+# Retrieval-Augmented Generation (RAG) Pipeline with Milvus and GPT-Neo
+
+This project implements a Retrieval-Augmented Generation (RAG) pipeline for querying enterprise knowledge bases using vector embeddings stored in **Milvus**, combined with a **GPT-Neo (EleutherAI/gpt-neo-1.3B)** language model to generate responses. The pipeline is deployed using **FastAPI** and containerized with **Docker**.
+
+## Overview
+
+The RAG pipeline ingests documents, preprocesses them, generates vector embeddings using `sentence-transformers/all-MiniLM-L6-v2`, and stores the embeddings in **Milvus**. A user query retrieves the top 3 most relevant documents, enhances the context, and generates a response using **GPT-Neo**. The system is designed to handle large-scale document retrieval and real-time response generation.
+
+---
+
+## Pipeline Architecture
+
+![RAG Pipeline Architecture](https://github.com/Ganeshdhanawade/qa-assigmemt-final1/blob/main/rag-pipeline.png)
+
+### Steps in the Pipeline:
+1. **Document Ingestion**:
+   - Documents (e.g., PDFs) are preprocessed into chunks.
+   - Vector embeddings for the chunks are generated using `sentence-transformers/all-MiniLM-L6-v2`.
+   - Embeddings are stored in **Milvus**, a vector database.
+
+2. **Query and Response Generation**:
+   - User queries are embedded and compared with the stored document embeddings in Milvus.
+   - The top 3 relevant document chunks are retrieved.
+   - A prompt is created by combining the query and retrieved context.
+   - The prompt is passed to **GPT-Neo** for generating a response.
+
+3. **Deployment**:
+   - The pipeline is served using FastAPI and containerized with Docker.
+   - Milvus, MinIO, and other dependencies are orchestrated using Docker Compose.
+
+---
+
+## Features
+
+- **Vector Database**: Uses Milvus for efficient storage and retrieval of embeddings.
+- **Embedding Model**: Leverages `sentence-transformers/all-MiniLM-L6-v2` for embedding generation.
+- **Language Model**: Uses GPT-Neo (EleutherAI/gpt-neo-1.3B) for text generation.
+- **Web API**: FastAPI endpoints for document upload and query handling.
+- **Scalable Deployment**: Containerized pipeline with Docker and Docker Compose.
+
+---
+
+## Technologies Used
+
+- **Programming Language**: Python
+- **Web Framework**: FastAPI
+- **Embedding Model**: `sentence-transformers/all-MiniLM-L6-v2`
+- **Vector Database**: Milvus
+- **Language Model**: `EleutherAI/gpt-neo-1.3B`
+- **Document Preprocessing**: PyPDF2
+- **Containerization**: Docker and Docker Compose
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+
+- Python 3.9 or later
+- Docker and Docker Compose installed
+- GPU (optional but recommended for faster inference)
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/your-repo/rag-pipeline.git
+cd rag-pipeline
+```
+
