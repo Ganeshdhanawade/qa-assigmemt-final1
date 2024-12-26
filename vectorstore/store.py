@@ -4,8 +4,9 @@ from app.utils import get_embedding
 class VectorStore:
     #create the database
     def __init__(self):
-        connections.connect("default", host="localhost", port = 19530)
+        connections.connect("default", host="localhost", port = 19530,timeout=80)
         fields = [
+            FieldSchema(name="id", dtype=DataType.INT64, is_primary=True, auto_id=True),
             FieldSchema(name="embedding",dtype=DataType.FLOAT_VECTOR,dim = 768),
             FieldSchema(name="chunk",dtype=DataType.VARCHAR,max_length =400),
         ]

@@ -1,11 +1,13 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import os
+os.environ["HUGGINGFACE_TOKEN"] = "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"
 
 class QueryModel:
     def __init__(self):
         #initiate the llma model and tokenizer
-        self.model_name = "meta-llama/Llama-2-7b-hf"
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-        self.model = AutoModelForCausalLM.from_pretrained(self.model_name)
+        self.model_name = "EleutherAI/gpt-neo-1.3B" #meta-llama/Llama-2-7b-chat-hf"  #meta-llama/Llama-2-7b-hf"
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name,use_auth_token=True) #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
+        self.model = AutoModelForCausalLM.from_pretrained(self.model_name,use_auth_token=True)
 
     def answer_query(self, query, chunks):
         """ answer quary based on top chunk using LLaMA model."""
