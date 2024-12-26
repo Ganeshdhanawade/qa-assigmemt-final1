@@ -4,8 +4,6 @@ This repository implements a complete Machine Learning Operations (MLOps) pipeli
 
 ---
 
----
-
 ## Overview
 This project automates the lifecycle of a machine learning model, from training and versioning to deployment and monitoring. It ensures reproducibility, scalability, and continuous improvement of the model.
 
@@ -51,7 +49,7 @@ The pipeline consists of three major stages:
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/your-repo/mlops-pipeline.git
+git clone https://github.com/mlops-pipeline.git
 cd mlops-pipeline
 ```
 
@@ -84,6 +82,27 @@ The RAG pipeline ingests documents, preprocesses them, generates vector embeddin
 3. **Deployment**:
    - The pipeline is served using FastAPI and containerized with Docker.
    - Milvus, MinIO, and other dependencies are orchestrated using Docker Compose.
+  
+## Repository Structure
+
+```plaintext
+qp-ai-assessment/
+├── app/             
+│   ├── routes.py          # API route handlers for upload and query
+│   ├── utils.py           # Utility functions for application logic
+├── models/
+│   ├── inference.py       # Inference logic for the model
+│   ├── model.py           # Model loading and preprocessing
+├── vectorstore/
+│   ├── store.py           # Integration logic with the vector database (Milvus)  
+├── tests/
+│   ├── test_routes.py     # Unit tests for API routes
+│   ├── test_store.py      # Unit tests for the vector store integration
+├── main.py                # Entry point for the FastAPI application
+├── Dockerfile         # Dockerfile for FastAPI application
+├── docker-compose.yml # Docker Compose configuration for the app and dependencies
+├── README.md              # Documentation for the repository
+```
 
 ---
 
@@ -120,7 +139,17 @@ The RAG pipeline ingests documents, preprocesses them, generates vector embeddin
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/rag-pipeline.git
-cd rag-pipeline
+git clone https://github.com/Ganeshdhanawade/qa-assigmemt-final1.git
+cd qa-assigmemt-final1
 ```
 
+### Step 2: run the docker-compose
+
+```bash
+docker-compose up -d
+```
+### Step 3: run API
+
+```bash
+http://localhost:8000/docs
+```
