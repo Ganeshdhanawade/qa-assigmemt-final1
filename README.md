@@ -10,7 +10,7 @@ This project automates the lifecycle of a machine learning model, from training 
 ---
 
 ## Architecture
-![MLOps Architecture](https://github.com/Ganeshdhanawade/qa-assigmemt-final1/blob/main/1_ub_u88a4MB5Uj-9Eb60VNA.jpg))
+![MLOps Architecture](https://github.com/Ganeshdhanawade/qp-ai-assessment1/blob/main/images/mlops-pipeline.jpg)
 
 The pipeline consists of three major stages:
 1. **Training**: Data preparation, model training, and versioning.
@@ -65,7 +65,7 @@ The RAG pipeline ingests documents, preprocesses them, generates vector embeddin
 
 ## Pipeline Architecture
 
-![RAG Pipeline Architecture](https://github.com/Ganeshdhanawade/qa-assigmemt-final1/blob/main/rag-pipeline.png)
+![RAG Pipeline Architecture](https://github.com/Ganeshdhanawade/qp-ai-assessment1/blob/main/images/rag-pipeline.jpg)
 
 ### Steps in the Pipeline:
 1. **Document Ingestion**:
